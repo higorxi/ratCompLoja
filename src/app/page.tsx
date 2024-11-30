@@ -66,20 +66,25 @@ export default function Home() {
       </section>
 
       <section className="py-8 bg-gray-800 text-white">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-semibold">Ligas Que Cobrimos</h2>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-          <Marquee>
-          {championships.map((championship, index) => (
-            <div key={index} className="text-center">
-              <Image src={championship.logo} alt={championship.name} width={100} height={100} className="mx-auto mb-4" />
-              <p className="text-xl font-semibold">{championship.name}</p>
-            </div>
-          ))}
-          </Marquee>
-        </div>
-      </section>
+  <div className="text-center mb-8">
+    <h2 className="text-3xl font-semibold">Ligas Que Cobrimos</h2>
+  </div>
+  <div className="w-full overflow-hidden">
+    <Marquee gradient={false} className="w-full">
+      <div className="flex space-x-16"> {/* Aumentei para space-x-16 para mais espaçamento */}
+        {championships.map((championship, index) => (
+          <div key={index} className="text-center">
+            <Image src={championship.logo} alt={championship.name} width={100} height={100} className="mx-auto" />
+            <p className="text-xl font-semibold">{championship.name}</p>
+          </div>
+        ))}
+      </div>
+    </Marquee>
+  </div>
+</section>
+
+
+
 
       <section className="py-16 bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
         <div className="container mx-auto px-4 text-center">
