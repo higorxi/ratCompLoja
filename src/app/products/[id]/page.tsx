@@ -1,9 +1,11 @@
 "use client"
-import { useState, useEffect } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Instagram, MessageCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 
 const products = [
   { id: 1, name: 'Camisa Clássica Tailandesa', price: 129.99, image: '/placeholder.svg', description: 'Uma camisa confortável e elegante feita de algodão tailandês premium.', sizes: ['P', 'M', 'G', 'GG'], colors: ['Branco', 'Preto', 'Roxo'], category: 'casual' },
@@ -28,7 +30,12 @@ interface CartItem {
   color: string;
 }
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+
+export default function ProductPage() {
+  const { id } = useParams();
+
+  const product = products.find(p => p.id === parseInt(id as string));
+
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -39,8 +46,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       setCart(JSON.parse(savedCart));
     }
   }, []);
-
-  const product = products.find(p => p.id === parseInt(params.id));
 
   if (!product) {
     return <div>Produto não encontrado</div>;
@@ -127,9 +132,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <div className="p-4">
                 <h3 className="text-lg font-semibold mb-2">{similarProduct.name}</h3>
                 <p className="text-gray-600 mb-4">R${similarProduct.price.toFixed(2)}</p>
-                <Button asChild>
-                  <Link href={`/products/${similarProduct.id}`}>Ver Detalhes</Link>
-                </Button>
+                <Link href={`/products/${similarProduct.id}`} className="text-purple-600">Ver mais</Link>
               </div>
             </div>
           ))}
