@@ -1,101 +1,125 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import Marquee from 'react-fast-marquee'
+
+const championships = [
+  { name: "Campeonato Brasileiro", logo: "/campeonato-brasileiro-logo.svg" },
+  { name: "Copa Libertadores", logo: "/libertadores-logo.svg" },
+  { name: "Premier League", logo: "/premier-league-logo.svg" },
+  { name: "La Liga", logo: "/la-liga-logo.svg" },
+  { name: "Bundesliga", logo: "/bundesliga-logo.svg" },
+  { name: "Serie A", logo: "/serie-a-logo.svg" },
+  { name: "Ligue 1", logo: "/ligue-1-logo.svg" },
+  { name: "Champions League", logo: "/champions-league-logo.svg" }
+]
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      <section className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-20">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-4">Bem-vindo à Rat Comp</h1>
+          <p className="text-xl mb-8">Descubra a perfeita combinação de estilo e conforto com nossas camisas tailandesas e artigos esportivos</p>
+          <Button asChild size="lg">
+            <Link href="/products">Compre Agora</Link>
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-semibold mb-8 text-center">Nossos Produtos em Destaque</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Image src="/placeholder.svg" alt="Camisa Clássica" width={300} height={300} className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">Camisa Clássica Tailandesa</h3>
+                <p className="text-gray-600 mb-4">Conforto e estilo em um só lugar</p>
+                <Button asChild>
+                  <Link href="/products/1">Ver Detalhes</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Image src="/placeholder.svg" alt="Camisa Esportiva" width={300} height={300} className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">Camisa Performance Esportiva</h3>
+                <p className="text-gray-600 mb-4">Projetada para o máximo desempenho</p>
+                <Button asChild>
+                  <Link href="/products/2">Ver Detalhes</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Image src="/placeholder.svg" alt="Camisa Estampada" width={300} height={300} className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">Camisa Estampa de Elefante</h3>
+                <p className="text-gray-600 mb-4">Arte tailandesa em cada detalhe</p>
+                <Button asChild>
+                  <Link href="/products/3">Ver Detalhes</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-gray-800 text-white">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-semibold">Ligas Que Cobrimos</h2>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <Marquee>
+          {championships.map((championship, index) => (
+            <div key={index} className="text-center">
+              <Image src={championship.logo} alt={championship.name} width={100} height={100} className="mx-auto mb-4" />
+              <p className="text-xl font-semibold">{championship.name}</p>
+            </div>
+          ))}
+          </Marquee>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-semibold mb-4">Atenção Revendedores!</h2>
+          <p className="text-xl mb-8">Está procurando camisas de qualidade para revenda? A Rat Comp oferece condições especiais para compras em atacado.</p>
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/contato-atacado">Entre em Contato</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-semibold mb-8 text-center">Por que Escolher a Rat Comp?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-2">Materiais de Qualidade</h3>
+              <p>Nossas camisas são feitas com o melhor algodão tailandês, garantindo conforto e durabilidade.</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-2">Designs Exclusivos</h3>
+              <p>Destaque-se com nossos padrões e estilos exclusivos inspirados na cultura tailandesa e no futebol mundial.</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-2">Aprovado por Atletas</h3>
+              <p>Testado e aprovado por atletas para máximo desempenho e conforto, seja no campo ou nas ruas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-purple-100">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-semibold mb-4">Oferta por Tempo Limitado</h2>
+          <p className="text-xl mb-8">Ganhe 20% de desconto na sua primeira compra! Use o código: RATCOMP20</p>
+          <Button asChild size="lg">
+            <Link href="/products">Compre Agora</Link>
+          </Button>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
