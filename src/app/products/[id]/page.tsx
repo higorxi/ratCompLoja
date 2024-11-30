@@ -105,12 +105,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               Adicionar ao Carrinho
             </Button>
             <Button asChild className="w-full">
-              <Link href={`https://wa.me/SEU_NUMERO_AQUI?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
+              <Link href={`https://wa.me/62985194415?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2" /> Contato via WhatsApp
               </Link>
             </Button>
             <Button asChild variant="outline" className="w-full">
-              <Link href={`https://www.instagram.com/direct/t/SEU_USUARIO_INSTAGRAM?text=${instagramMessage}`} target="_blank" rel="noopener noreferrer">
+              <Link href={`https://www.instagram.com/direct/t/higor_m.t?text=${instagramMessage}`} target="_blank" rel="noopener noreferrer">
                 <Instagram className="mr-2" /> Contato via Instagram DM
               </Link>
             </Button>
