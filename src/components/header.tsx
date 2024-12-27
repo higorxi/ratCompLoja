@@ -17,6 +17,7 @@ export default function Header() {
           <ul className="flex space-x-4">
             <li><Link href="/" className="hover:text-gray-300">Home</Link></li>
             <li><Link href="/products" className="hover:text-gray-300">Products</Link></li>
+            <li><Link href="/profile" className="hover:text-gray-300">Profile</Link></li>
             <li>
               <button
                 onClick={toggleCart}
