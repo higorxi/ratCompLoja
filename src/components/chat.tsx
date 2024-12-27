@@ -25,7 +25,7 @@ export default function Chat() {
   const [activeChat, setActiveChat] = useState("general")
   const [message, setMessage] = useState("")
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     // Aqui você implementaria a lógica para enviar a mensagem
     console.log("Mensagem enviada:", message)
