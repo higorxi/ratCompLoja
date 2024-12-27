@@ -23,7 +23,7 @@ export default function OrderStatus() {
               <CardContent>
                 <div className="flex justify-between items-center">
                   <span>Status: {order.status}</span>
-                  <Badge variant={order.status === "Entregue" ? "success" : order.status === "Em trânsito" ? "warning" : "default"}>
+                  <Badge variant={order.status === "Entregue" ? "default" : order.status === "Em trânsito" ? "outline" : "default"}>
                     {order.status}
                   </Badge>
                 </div>
