@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CartItem, useCart } from '@/context/CartContext';
+import { useCart } from '@/context/CartContext';
 
 const products = [
   { 
@@ -124,20 +124,6 @@ const products = [
   }
 ];
 
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-  sizes: string[];
-  colors: string[];
-  category: string;
-  quantity: number;
-  size: string;
-  color: string;
-}
-
 export default function ProductPage() {
   const { id } = useParams();
   const { addItem } = useCart();
@@ -150,7 +136,8 @@ export default function ProductPage() {
     return <div>Produto não encontrado</div>;
   }
 
-  const addToCart = (product: CartItem) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const addToCart = (product: any) => {
     if (!selectedSize || !selectedColor) {
       alert('Por favor, selecione um tamanho e uma cor.');
       return;
