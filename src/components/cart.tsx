@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { ShoppingBag, X, Plus, Minus, Trash2 } from 'lucide-react'
 import Image from 'next/image'
+import { useCart } from '@/context/CartContext'
 
 interface CartItem {
   id: number
@@ -14,7 +15,8 @@ interface CartItem {
 }
 
 export function Cart() {
-  const [isOpen, setIsOpen] = useState(false)
+  const { isCartOpen , toggleCart } = useCart();
+  
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   useEffect(() => {
@@ -27,8 +29,6 @@ export function Cart() {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems))
   }, [cartItems])
-
-  const toggleCart = () => setIsOpen(!isOpen)
 
   const updateQuantity = (id: number, change: number) => {
     setCartItems(prevItems =>
@@ -67,7 +67,7 @@ export function Cart() {
           </span>
         )}
       </button>
-      {isOpen && (
+      {isCartOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-lg p-6 overflow-y-auto">
             <button onClick={toggleCart} className="absolute top-4 right-4">

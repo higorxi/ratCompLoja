@@ -1,7 +1,12 @@
-import Link from 'next/link'
-import { ShoppingBag } from 'lucide-react'
+"use client"
+
+import Link from 'next/link';
+import { ShoppingBag } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 export default function Header() {
+  const { toggleCart } = useCart();
+
   return (
     <header className="bg-purple-700 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -12,11 +17,17 @@ export default function Header() {
           <ul className="flex space-x-4">
             <li><Link href="/" className="hover:text-gray-300">Home</Link></li>
             <li><Link href="/products" className="hover:text-gray-300">Products</Link></li>
-            <li><Link href="/cart" className="hover:text-gray-300"><ShoppingBag /></Link></li>
+            <li>
+              <button
+                onClick={toggleCart}
+                className="hover:text-gray-300"
+              >
+                <ShoppingBag />
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
-  )
+  );
 }
-

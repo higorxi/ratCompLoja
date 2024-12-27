@@ -127,7 +127,6 @@ export default function Home() {
                     height={100}
                     className="mx-auto"
                   />
-                  <p className="text-xl font-semibold">{championship.name}</p>
                 </div>
               ))}
             </div>
