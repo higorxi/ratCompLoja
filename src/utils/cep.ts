@@ -1,4 +1,4 @@
-export async function calcularFrete(cepDestino) {
+export async function calcularFrete(cepDestino: string) {
     const cepOrigem = '75083-125'; 
     
     const url = `https://api.linkapi.com.br/v1/correios/frete?cepOrigem=${cepOrigem}&cepDestino=${cepDestino}&peso=1&comprimento=10&largura=10&altura=10&diametro=0&tipo=caixa`;
