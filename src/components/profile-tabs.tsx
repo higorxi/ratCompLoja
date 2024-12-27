@@ -2,12 +2,12 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { UserCircle, Key, ShoppingBag, Truck, MessageCircle, Settings } from 'lucide-react'
-import ProfileData from "./tabs/profile-data"
-import PasswordChange from "./tabs/password-change"
-import Orders from "./tabs/orders"
-import OrderStatus from "./tabs/order-status"
-import Chat from "./tabs/chat"
-import OtherSettings from "./tabs/other-settings"
+import ProfileData from "./profile-data"
+import Chat from "./chat"
+import OrderStatus from "./order-status"
+import Orders from "./orders"
+import OtherSettings from "./other-settings"
+import PasswordChange from "./password-change"
 
 export default function ProfileTabs() {
   return (
