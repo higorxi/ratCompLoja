@@ -7,7 +7,42 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { CheckCircle, CreditCard, MapPin, MessageCircle } from 'lucide-react'
 
-const orders = [
+type OrderItem = {
+  name: string
+  quantity: number
+  price: string
+}
+
+type OrderStep = {
+  label: string
+  date: string | null
+  completed: boolean
+}
+
+type OrderPayment = {
+  method: string
+  last4: string | null
+}
+
+type OrderAddress = {
+  street: string
+  city: string
+  state: string
+  zipCode: string
+}
+
+type Order = {
+  id: number
+  date: string
+  total: string
+  status: string
+  items: OrderItem[]
+  steps: OrderStep[]
+  payment: OrderPayment
+  address: OrderAddress
+}
+
+const orders: Order[] = [
   { 
     id: 1, 
     date: "2023-05-01", 
@@ -86,8 +121,12 @@ const orders = [
   },
 ]
 
-function OrderDetails({ order }) {
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+interface OrderDetailsProps {
+  order: Order
+}
+
+function OrderDetails({ order }: OrderDetailsProps) {
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -212,11 +251,7 @@ export default function Orders() {
                 <TableCell>{order.date}</TableCell>
                 <TableCell>{order.total}</TableCell>
                 <TableCell>
-                  <Badge variant={
-                    order.status === "Entregue" ? "success" : 
-                    order.status === "Em trânsito" ? "warning" : 
-                    "default"
-                  }>
+                  <Badge variant={order.status === "Entregue" ? "default" : order.status === "Em trânsito" ? "outline" : "default"}>
                     {order.status}
                   </Badge>
                 </TableCell>
@@ -231,4 +266,3 @@ export default function Orders() {
     </Card>
   )
 }
-
